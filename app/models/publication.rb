@@ -5,12 +5,13 @@ class Publication < ApplicationRecord
   
   validates :title, presence: true
   validates :description, presence: true
-  validates :to_display, presence: true, inclusion: { in: [true, false] }
+  validates :to_display, inclusion: { in: [true, false] }
 
 
   def publication_picture_url
     if publication_picture.attached?
-      Rails.application.routes.url_helpers.rails_blob_path(publication_picture, only_path: true)
+      # Rails.application.routes.url_helpers.rails_blob_path(publication_picture, only_path: true)
+      publication_picture.url
     else
       nil
     end

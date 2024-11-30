@@ -24,6 +24,8 @@ class PublicationsController < ApplicationController
         @publication.publication_picture.attach(params[:publication_picture])
       end
       render json: @publication, status: :created, location: @publication
+      puts "----------------------------------------------------------------------------------------------------------------------------"
+      puts @publication.publication_picture_url
     else
       render json: @publication.errors, status: :unprocessable_entity
     end

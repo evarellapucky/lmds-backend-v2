@@ -20,7 +20,8 @@ class Event < ApplicationRecord
 
     def event_picture_url
       if event_picture.attached?
-        Rails.application.routes.url_helpers.rails_blob_path(event_picture, only_path: true)
+        # Rails.application.routes.url_helpers.rails_blob_path(event_picture, only_path: true)
+        event_picture.url
       else
         nil
       end
